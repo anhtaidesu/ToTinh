@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúng mình hẹn hò nhé</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</head>
+<body>
+    <div class="container" id="date-container">
+        <h1 class="gsap-title">Tuyệt vời! Mình lên kế hoạch cho buổi hẹn đầu tiên nhé!</h1>
+        <form id="henhoForm">
+            <div class="question">
+                <label>Địa điểm:</label>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="dia_diem" value="Cafe" required>
+                        <img src="https://img.icons8.com/color/96/coffee.png" alt="Cafe">
+                        <span>Cafe</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="dia_diem" value="Công viên">
+                        <img src="https://img.icons8.com/color/96/park.png" alt="Công viên">
+                        <span>Công viên</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="dia_diem" value="Nhà hàng">
+                        <img src="https://img.icons8.com/color/96/restaurant.png" alt="Nhà hàng">
+                        <span>Nhà hàng</span>
+                    </label>
+                </div>
+            </div>
+            <div class="question">
+                <label>Đồ uống:</label>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="do_uong" value="Trà sữa" required>
+                        <img src="https://img.icons8.com/color/96/bubble-tea.png" alt="Trà sữa">
+                        <span>Trà sữa</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="do_uong" value="Cà phê">
+                        <img src="https://img.icons8.com/color/96/coffee-to-go.png" alt="Cà phê">
+                        <span>Cà phê</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="do_uong" value="Nước ép">
+                        <img src="https://img.icons8.com/color/96/orange-juice.png" alt="Nước ép">
+                        <span>Nước ép</span>
+                    </label>
+                </div>
+            </div>
+            <div class="question">
+                <label>Món ăn:</label>
+                <div class="options">
+                    <label class="option-card">
+                        <input type="radio" name="mon_an" value="Bánh ngọt" required>
+                        <img src="https://img.icons8.com/color/96/cupcake.png" alt="Bánh ngọt">
+                        <span>Bánh ngọt</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="mon_an" value="Kem">
+                        <img src="https://img.icons8.com/color/96/ice-cream.png" alt="Kem">
+                        <span>Kem</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="mon_an" value="Ăn vặt">
+                        <img src="https://img.icons8.com/color/96/french-fries.png" alt="Ăn vặt">
+                        <span>Ăn vặt</span>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="gsap-btn">Hẹn hò thôi!</button>
+        </form>
+        <div id="thongbao"></div>
+        <button id="darkModeBtn" class="dark-btn" aria-label="Chuyển chế độ tối"><span>🌙</span></button>
+        
+        <div id="lottie-firework" style="width:180px;height:180px;margin:24px auto;display:none;"></div>
+    </div>
+    <script src="date.js"></script>
+    <script>
+    // GSAP animation
+    gsap.from(".gsap-title", {y: -50, opacity: 0, duration: 1, ease: "bounce"});
+    gsap.from(".option-card", {
+        opacity: 0,
+        y: 30,
+        stagger: 0.1,
+        duration: 0.7,
+        delay: 0.5
+    });
+    gsap.from(".gsap-btn", {scale: 0.7, opacity: 0, duration: 0.7, delay: 1.2, ease: "back"});
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    lottie.loadAnimation({
+        container: document.getElementById('lottie-firework'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: '../firework.json' // pháo hoa mới
+    });
+});
+</script>
+<script>
+document.querySelectorAll('.option-card input[type="radio"]').forEach(input => {
+    input.addEventListener('change', function() {
+        anime({
+            targets: this.parentElement,
+            scale: [1, 1.13, 1],
+            duration: 500,
+            easing: 'easeInOutElastic(1, .8)'
+        });
+    });
+});
+</script>
+<script>
+anime({
+    targets: '.gsap-title',
+    translateY: [-80, 0],
+    opacity: [0, 1],
+    duration: 1200,
+    easing: 'easeOutElastic(1, .8)'
+});
+anime({
+    targets: '.option-card',
+    opacity: [0, 1],
+    translateY: [40, 0],
+    delay: anime.stagger(120, {start: 400}),
+    duration: 700,
+    easing: 'easeOutQuad'
+});
+anime({
+    targets: '.gsap-btn',
+    scale: [0.7, 1],
+    opacity: [0, 1],
+    duration: 700,
+    delay: 1200,
+    easing: 'easeOutBack'
+});
+</script>
+</body>
+</html>

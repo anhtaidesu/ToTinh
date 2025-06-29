@@ -1,0 +1,332 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(120deg, #ffe0ec, #fff4fa, #ffe0ec, #ffb6c1);
+    background-size: 200% 200%;
+    animation: romanticBg 8s ease-in-out infinite alternate;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Ẩn thanh cuộn */
+}
+
+@keyframes romanticBg {
+    0% {background-position: 0% 50%;}
+    100% {background-position: 100% 50%;}
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255,244,250,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(255,182,193,0.25);
+    padding: 32px 24px 24px 24px;
+    text-align: center;
+    border: 1.5px solid #ffb6c1;
+}
+
+h1 {
+    color: #d0006e;
+    margin-bottom: 30px;
+}
+
+.question {
+    margin-bottom: 28px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffe0ec;
+    border-radius: 16px;
+    padding: 16px 12px 10px 12px;
+    box-shadow: 0 2px 8px rgba(255,182,193,0.12);
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.2s, box-shadow 0.2s;
+    min-width: 110px;
+    position: relative;
+}
+
+.option-card input[type="radio"] {
+    display: none;
+}
+
+.option-card img {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 2px 8px #ffb6c1aa);
+}
+
+.option-card span {
+    font-size: 1.1em;
+    color: #d72660;
+    font-weight: 600;
+}
+
+.option-card input[type="radio"]:checked + img,
+.option-card input[type="radio"]:checked ~ span {
+    filter: brightness(1.1) drop-shadow(0 0 10px #ffb6c1);
+    color: #ff3e7f;
+}
+
+.option-card input[type="radio"]:checked ~ span {
+    color: #ff3e7f;
+}
+
+.option-card:has(input[type="radio"]:checked) {
+    border: 2.5px solid #ff3e7f;
+    box-shadow: 0 4px 16px #ffb6c1aa;
+}
+
+button[type="submit"] {
+    margin-top: 18px;
+    background: linear-gradient(90deg, #ffb6c1 0%, #ff3e7f 100%);
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 36px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #ffb6c1aa;
+    transition: background 0.2s, transform 0.15s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #ff3e7f 0%, #ffb6c1 100%);
+    transform: scale(1.05);
+}
+
+#thongbao {
+    margin-top: 24px;
+    font-size: 1.2em;
+    color: #d72660;
+    font-weight: bold;
+    min-height: 32px;
+}
+
+/* Hiệu ứng trái tim rơi */
+.heart {
+    position: fixed;
+    top: -10vh; /* Bắt đầu từ phía trên màn hình */
+    /* Kích thước và animation sẽ được set bởi JavaScript */
+    animation-name: fall;
+    animation-timing-function: linear;
+    color: #ff4081;
+    z-index: 1; /* Nằm dưới container chính */
+    user-select: none; /* Ngăn người dùng chọn các trái tim */
+    pointer-events: none; /* Trái tim không cản trở việc click vào nút */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh);
+    }
+}
+
+/* CSS cho trang date.html */
+#date-container {
+    max-width: 600px;
+    text-align: left;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d0006e;
+    padding: 0 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+form input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+form input[type="radio"] {
+    margin-right: 8px;
+}
+
+form .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 20px;
+    background-color: #ff4081;
+}
+
+form .btn:hover {
+    background-color: #f50057;
+}
+
+/* Style cho nút Đồng ý và Không ở index.html */
+.love-btn {
+    display: inline-block;
+    min-width: 120px;
+    margin: 0 18px;
+    padding: 16px 32px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 32px;
+    color: #fff;
+    background: linear-gradient(90deg, #ff3e7f 0%, #ffb6c1 100%);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px #ffb6c1cc;
+}
+
+.love-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 62, 127, 0.3);
+}
+
+.love-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(255, 62, 127, 0.2);
+}
+
+/* Các nút trong trang chính */
+.buttons {
+    position: relative;
+    width: 350px; /* hoặc 100%, nhưng nên cố định để nút không bị ra ngoài */
+    margin: 32px auto 0 auto;
+    min-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noBtn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    transition: left 0.3s cubic-bezier(.68,-0.55,.27,1.55), top 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+#yesBtn {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 600px) {
+    .container {
+        max-width: 98vw;
+        padding: 16px 4vw 20px 4vw;
+        border-radius: 16px;
+    }
+    .buttons {
+        width: 98vw;
+        min-height: 90px;
+        gap: 12vw;
+        margin-top: 24px;
+    }
+    .love-btn {
+        min-width: 90px;
+        font-size: 1em;
+        padding: 12px 10vw;
+        border-radius: 24px;
+    }
+    h1, .gsap-title {
+        font-size: 1.2em;
+        margin-bottom: 18px;
+    }
+    .question {
+        margin-bottom: 18px;
+    }
+    .options {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+    .option-card {
+        min-width: 70vw;
+        padding: 10px 0;
+    }
+    #noBtn, #yesBtn {
+        font-size: 1em;
+        padding: 12px 10vw;
+    }
+    .heart {
+        font-size: 1.5rem !important;
+    }
+}
+
+.dark-btn {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 100;
+    background: #fff4fa;
+    color: #d72660;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5em;
+    box-shadow: 0 2px 8px #ffb6c1aa;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.dark-btn:hover {
+    background: #d72660;
+    color: #fff4fa;
+}
+body.dark {
+    background: #181825;
+}
+body.dark .container {
+    background: rgba(35,35,54,0.85);
+    color: #fff;
+}
+body.dark h1, body.dark .gsap-title, body.dark legend {
+    color: #ffb6c1;
+}
+body.dark .option-card {
+    background: #2d2d44;
+    color: #fff;
+}
+body.dark .love-btn {
+    background: linear-gradient(90deg, #232336 0%, #ff3e7f 100%);
+    color: #fff;
+}
+body.dark .love-btn:hover {
+    background: linear-gradient(90deg, #ff3e7f 0%, #232336 100%);
+}
+body.dark .heart {
+    color: #ffb6c1;
+}
+
+body, .container, .love-btn, .option-card {
+    transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+}
